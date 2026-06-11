@@ -1,0 +1,15 @@
+{
+  "name": "FotoProtector · Proyecto Soludable",
+  "short_name": "FotoProtector",
+  "description": "Algoritmo clínico de recomendación de fotoprotector - Proyecto Soludable HUCS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8f6f9",
+  "theme_color": "#1ab8cc",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}
