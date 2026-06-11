@@ -4,7 +4,7 @@
 //  la clave de acceso sin tocar el código principal.
 // ============================================================
 var CONFIG = {
-  ACCESS_KEY: "soludable2025",
+  ACCESS_KEY: "soludable2026",
   APP_VERSION: "2.0",
   INSTITUCION: "Hospital Universitario Costa del Sol",
   PROYECTO: "Proyecto Soludable"
