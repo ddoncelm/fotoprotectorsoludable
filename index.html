@@ -286,8 +286,8 @@ function tog(k,v){
 function goNext(){if(st.step<STEPS){st.step++;render();window.scrollTo(0,0);}}
 function goBack(){if(st.step>0){st.step--;render();window.scrollTo(0,0);}}
 function shuf(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-function ob(k,v,ic,lb,sb){var s=st.ans[k]===v;return '<button class="opt-btn'+(s?' sel':'')+'" onclick="sel(''+k+'',''+v+'')"><div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(ic||'')+'</div><div><div class="opt-lbl">'+lb+'</div>'+(sb?'<div class="opt-sub">'+sb+'</div>':'')+'</div></button>';}
-function cb(k,v,ic,lb,sb){var c=inc(st.ans[k],v);return '<button class="chk-btn'+(c?' chkd':'')+'" onclick="tog(''+k+'',''+v+'')"><div class="chk-box">'+(c?'&#10003;':'')+'</div><div><div class="chk-lbl">'+(ic?ic+' ':'')+lb+'</div>'+(sb?'<div class="chk-sub">'+sb+'</div>':'')+'</div></button>';}
+function ob(k,v,ic,lb,sb){var s=st.ans[k]===v;return '<button class="opt-btn'+(s?' sel':'')+'" onclick="sel(\''+k+'\',\''+v+'\')"><div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(ic||'')+'</div><div><div class="opt-lbl">'+lb+'</div>'+(sb?'<div class="opt-sub">'+sb+'</div>':'')+'</div></button>';}
+function cb(k,v,ic,lb,sb){var c=inc(st.ans[k],v);return '<button class="chk-btn'+(c?' chkd':'')+'" onclick="tog(\''+k+'\',\''+v+'\')"><div class="chk-box">'+(c?'&#10003;':'')+'</div><div><div class="chk-lbl">'+(ic?ic+' ':'')+lb+'</div>'+(sb?'<div class="chk-sub">'+sb+'</div>':'')+'</div></button>';}
 function nr(nxt,ok){return '<div class="nav-row no-print"><button class="btn-bk" onclick="goBack()">Atras</button><button class="btn-nx"'+(ok?'':' disabled')+' onclick="'+nxt+'">Siguiente</button></div>';}
 
 function compute(){
@@ -409,7 +409,7 @@ function showResult(){
     h+='<div class="prods-colabs">&#8505; Los productos mostrados son de <strong>marcas colaboradoras del Proyecto Soludable</strong> que cumplen los criterios clinicos. <strong>Existen otras marcas en las farmacias</strong> con formulaciones equivalentes igualmente validas.</div>';
     rec.prods.forEach(function(pr){
       h+='<div class="prod-card">';
-      if(pr.foto&&pr.foto.length>50){h+='<img class="prod-img" src="'+pr.foto+'" alt="'+pr.nombre+'" loading="lazy" onerror="this.style.display='none'">';}
+      if(pr.foto&&pr.foto.length>50){h+='<img class="prod-img" src="'+pr.foto+'" alt="'+pr.nombre+'" loading="lazy" onerror="this.style.display=\'none\'">';}
       else{h+='<div class="prod-img-ph">&#129498;</div>';}
       h+='<div class="prod-info"><div class="prod-marca">'+pr.marca+'</div><div class="prod-nombre">'+pr.nombre+'</div><div class="prod-desc">'+pr.descripcion+'</div><div class="prod-chips">'+pr.tags.slice(0,4).map(function(t){return '<span class="prod-chip">'+t+'</span>';}).join('')+'</div></div></div>';
     });
