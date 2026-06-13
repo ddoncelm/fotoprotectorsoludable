@@ -168,7 +168,7 @@ body{font-family:'Nunito',sans-serif;background:#e8f6f9;min-height:100vh;color:#
 <div class="lock-card">
 <div class="lock-lbl">Clave de acceso</div>
 <input type="password" class="lock-inp" id="keyInput" placeholder="Introduce la clave" autocomplete="off" onkeydown="if(event.key==='Enter')checkKey()">
-<button class="lock-btn" onclick="checkKey()">Acceder</button>
+<button class="lock-btn" onclick="checkKey()">Acceder →</button>
 <div class="lock-err" id="keyErr">Clave incorrecta. Intentalo de nuevo.</div>
 </div>
 <div class="lock-note">Uso exclusivo para profesionales sanitarios<br>Hospital Universitario Costa del Sol - Junta de Andalucia</div>
@@ -288,7 +288,7 @@ function goBack(){if(st.step>0){st.step--;render();window.scrollTo(0,0);}}
 function shuf(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function ob(k,v,ic,lb,sb){var s=st.ans[k]===v;return '<button class="opt-btn'+(s?' sel':'')+'" onclick="sel(\''+k+'\',\''+v+'\')"><div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(ic||'')+'</div><div><div class="opt-lbl">'+lb+'</div>'+(sb?'<div class="opt-sub">'+sb+'</div>':'')+'</div></button>';}
 function cb(k,v,ic,lb,sb){var c=inc(st.ans[k],v);return '<button class="chk-btn'+(c?' chkd':'')+'" onclick="tog(\''+k+'\',\''+v+'\')"><div class="chk-box">'+(c?'✓':'')+'</div><div><div class="chk-lbl">'+(ic?ic+' ':'')+lb+'</div>'+(sb?'<div class="chk-sub">'+sb+'</div>':'')+'</div></button>';}
-function nr(nxt,ok){return '<div class="nav-row no-print"><button class="btn-bk" onclick="goBack()">Atras</button><button class="btn-nx"'+(ok?'':' disabled')+' onclick="'+nxt+'">Siguiente</button></div>';}
+function nr(nxt,ok){return '<div class="nav-row no-print"><button class="btn-bk" onclick="goBack()">← Atrás</button><button class="btn-nx"'+(ok?'':' disabled')+' onclick="'+nxt+'">Siguiente →</button></div>';}
 
 function compute(){
   var a=st.ans,spf=30,filtro='mixto',tex='emulsion ligera';
@@ -388,24 +388,24 @@ function showResult(){
   h+='<div class="res-hero"><div class="rh-c1"></div><div class="rh-c2"></div>';
   h+='<div class="res-spf-l">Factor de Proteccion Solar recomendado</div>';
   h+='<div class="res-spf-v">SPF '+rec.spfL+'</div>';
-  h+='<div class="res-ttl">Recomendacion personalizada Proyecto Soludable</div>';
+  h+='<div class="res-ttl">🛡️ Recomendación personalizada · Proyecto Soludable</div>';
   h+='<div class="res-chips"><div class="chip">'+rec.filtro+'</div><div class="chip">'+rec.tex+'</div>'+(rec.reap?'<div class="chip">Reaplicar c/2h</div>':'')+rec.extras.slice(0,3).map(function(e){return '<div class="chip">'+e+'</div>';}).join('')+'</div></div>';
   if(rec.alertas.length){
     h+='<div class="res-det">';
-    rec.alertas.forEach(function(al){h+='<div class="det-row"><div class="det-ico">⚠️</div><div><div class="det-l">Alerta clinica</div><div class="alrt-v">'+al+'</div></div></div>';});
+    rec.alertas.forEach(function(al){h+='<div class="det-row"><div class="det-ico">⚠️</div><div><div class="det-l">🚨 Alerta clínica</div><div class="alrt-v">'+al+'</div></div></div>';});
     h+='</div>';
   }
   h+='<div class="res-det">';
-  h+='<div class="det-row"><div class="det-ico">🔢</div><div><div class="det-l">SPF recomendado</div><div class="det-v">SPF '+rec.spfL+'</div><div class="det-s">Factor de Proteccion Solar minimo indicado</div></div></div>';
+  h+='<div class="det-row"><div class="det-ico">🔢</div><div><div class="det-l">📊 SPF recomendado</div><div class="det-v">SPF '+rec.spfL+'</div><div class="det-s">Factor de Proteccion Solar minimo indicado</div></div></div>';
   h+='<div class="det-row"><div class="det-ico">🧪</div><div><div class="det-l">Tipo de filtro</div><div class="det-v">'+rec.filtro+'</div></div></div>';
   h+='<div class="det-row"><div class="det-ico">🧴</div><div><div class="det-l">Textura</div><div class="det-v">'+rec.tex+'</div></div></div>';
   if(rec.extras.length)h+='<div class="det-row"><div class="det-ico">✅</div><div><div class="det-l">Caracteristicas adicionales</div><div class="det-v">'+rec.extras.join(' - ')+'</div></div></div>';
   h+='<div class="det-row" style="border-bottom:none"><div class="det-ico">⏱️</div><div><div class="det-l">Reaplicacion</div><div class="det-v">'+(rec.reap?'Cada 2 horas - Tras bano / sudoracion / toalla':'Cada 2-4 horas segun actividad')+'</div></div></div>';
   h+='</div>';
-  if(rec.reap)h+='<div class="reap-ban"><div style="font-size:24px">⏱️</div><div><div class="reap-t">Reaplicacion estricta obligatoria</div><div class="reap-s">Cada 2 horas y tras bano, sudoracion o secado con toalla</div></div></div>';
-  h+='<div class="farm-card"><div class="farm-ttl">Que pedir en la farmacia?</div><div class="farm-frase">'+rec.frase+'</div><button class="farm-copy no-print" id="copyBtn" onclick="copiarFrase()">Copiar frase para la farmacia</button><div class="farm-nota">Muestra este texto al farmaceutico o leelo en voz alta.</div></div>';
+  if(rec.reap)h+='<div class="reap-ban"><div style="font-size:24px">⏱️</div><div><div class="reap-t">⏱️ Reaplicación estricta obligatoria</div><div class="reap-s">Cada 2 horas y tras bano, sudoracion o secado con toalla</div></div></div>';
+  h+='<div class="farm-card"><div class="farm-ttl">🏥 ¿Qué pedir en la farmacia?</div><div class="farm-frase">'+rec.frase+'</div><button class="farm-copy no-print" id="copyBtn" onclick="copiarFrase()">📋 Copiar frase para la farmacia</button><div class="farm-nota">Muestra este texto al farmaceutico o leelo en voz alta.</div></div>';
   if(rec.prods.length>0){
-    h+='<div class="prods-section"><div class="prods-hdr"><div class="prods-hdr-t">Productos recomendados</div><div class="prods-hdr-s">'+rec.prods.length+' productos del catalogo adaptados a este perfil</div></div>';
+    h+='<div class="prods-section"><div class="prods-hdr"><div class="prods-hdr-t">🛍️ Productos recomendados</div><div class="prods-hdr-s">'+rec.prods.length+' productos del catalogo adaptados a este perfil</div></div>';
     h+='<div class="prods-colabs">ℹ️ Los productos mostrados son de <strong>marcas colaboradoras del Proyecto Soludable</strong> que cumplen los criterios clinicos. <strong>Existen otras marcas en las farmacias</strong> con formulaciones equivalentes igualmente validas.</div>';
     rec.prods.forEach(function(pr){
       h+='<div class="prod-card">';
@@ -415,12 +415,12 @@ function showResult(){
     });
     h+='</div>';
   }
-  h+='<div class="card"><div style="font-size:11.5px;font-weight:800;color:var(--turqD);margin-bottom:8px">Razonamiento clinico</div>';
+  h+='<div class="card"><div style="font-size:11.5px;font-weight:800;color:var(--turqD);margin-bottom:8px">🧠 Razonamiento clínico</div>';
   rec.razones.forEach(function(r){h+='<div class="razon-item"><div class="razon-arr">-></div><div class="razon-txt">'+r+'</div></div>';});
-  h+='<div class="msg-box"><div class="msg-lbl">Mensaje del Proyecto Soludable</div><div class="msg-txt">El mejor fotoprotector es el que el paciente usa. Prioriza la adherencia y la textura que mejor se adapte a su rutina.</div></div></div>';
+  h+='<div class="msg-box"><div class="msg-lbl">💬 Mensaje del Proyecto Soludable</div><div class="msg-txt">El mejor fotoprotector es el que el paciente usa. Prioriza la adherencia y la textura que mejor se adapte a su rutina.</div></div></div>';
   h+='<div style="display:flex;flex-direction:column;gap:8px" class="no-print">';
-  h+='<button class="print-btn" onclick="imprimirReceta()">Imprimir receta de recomendacion</button>';
-  h+='<button class="reset-btn" onclick="resetAll()">Nueva evaluacion</button>';
+  h+='<button class="print-btn" onclick="imprimirReceta()">🖨️ Imprimir receta de recomendación</button>';
+  h+='<button class="reset-btn" onclick="resetAll()">🔄 Nueva evaluación</button>';
   h+='</div>';
   document.getElementById('app').innerHTML=h;
   document.getElementById('progFill').style.width='100%';
@@ -430,9 +430,9 @@ function showResult(){
 }
 
 function s0(){
-  var it=['Antecedentes','Fototipo','Exposicion','Patologia','Medicacion','Edad','Tipo de piel','Adherencia'];
+  var it=['🩺 Antecedentes','🌞 Fototipo','🏖️ Exposición','🧬 Patología','💊 Medicación','👶 Edad','🧴 Tipo de piel','🧠 Adherencia'];
   var g='<div class="wgrid">'+it.map(function(i){return '<div class="witem">'+i+'</div>';}).join('')+'</div>';
-  return '<div class="card"><div style="text-align:center;padding:6px 0 14px"><div style="font-size:48px;margin-bottom:8px">☀️</div><div style="font-size:16px;font-weight:900;color:#0e3a42;margin-bottom:6px">Recomendacion de Fotoprotector</div><div style="font-size:12px;color:var(--gris);line-height:1.5;max-width:280px;margin:0 auto">Algoritmo clinico del <strong>Proyecto Soludable</strong> - Hospital Universitario Costa del Sol</div></div><div style="background:var(--turqL);border-radius:11px;padding:11px;margin-bottom:14px"><div style="font-size:10px;font-weight:800;color:var(--turqD);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">8 dominios clinicos evaluados</div>'+g+'</div><button class="btn-nx" style="width:100%" onclick="goNext()">Comenzar evaluacion</button></div>';
+  return '<div class="card"><div style="text-align:center;padding:6px 0 14px"><div style="font-size:48px;margin-bottom:8px">☀️</div><div style="font-size:16px;font-weight:900;color:#0e3a42;margin-bottom:6px">Recomendacion de Fotoprotector</div><div style="font-size:12px;color:var(--gris);line-height:1.5;max-width:280px;margin:0 auto">Algoritmo clinico del <strong>Proyecto Soludable</strong> - Hospital Universitario Costa del Sol</div></div><div style="background:var(--turqL);border-radius:11px;padding:11px;margin-bottom:14px"><div style="font-size:10px;font-weight:800;color:var(--turqD);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px">8 dominios clinicos evaluados</div>'+g+'</div><button class="btn-nx" style="width:100%" onclick="goNext()">Comenzar evaluación →</button></div>';
 }
 function s1(){
   var h='<div class="card"><div class="step-badge">Paso 1 de 8</div><div class="card-title">Antecedentes oncologicos cutaneos</div><div class="card-desc">Antecedentes personales o familiares de cancer de piel?</div><div class="opt-grid">';
@@ -511,7 +511,7 @@ function s8(){
   h+=cb('adh','antimanchas',null,'Antimancha / anti-aging','Niacinamida, antioxidantes');
   h+=cb('adh','eco',null,'Formula ecologica / mineral','Ingredientes naturales / sostenible');
   h+=cb('adh','ninguno','✅','Sin preferencias especiales','Solo eficacia y textura agradable');
-  h+='</div><div class="nav-row no-print"><button class="btn-bk" onclick="goBack()">Atras</button><button class="btn-nx"'+(hasAny('adh')?'':' disabled')+' onclick="showResult()">Ver recomendacion</button></div></div>';return h;
+  h+='</div><div class="nav-row no-print"><button class="btn-bk" onclick="goBack()">← Atrás</button><button class="btn-nx"'+(hasAny('adh')?'':' disabled')+' onclick="showResult()">Ver recomendación →</button></div></div>';return h;
 }
 
 function render(){
